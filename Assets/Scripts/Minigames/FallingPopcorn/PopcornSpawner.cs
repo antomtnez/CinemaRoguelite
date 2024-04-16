@@ -2,29 +2,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PopcornSpawner : MonoBehaviour{
-    [SerializeField] GameObject BadPopcorn;
+    [SerializeField] GameObject Popcorn;
     [SerializeField] int PoolSize = 0;
     [SerializeField] List<GameObject> PoolList = new List<GameObject>();
     [SerializeField] float TimeBtwSpawn;
     private float m_CurrentTimer;
-
-    void Start(){
-        Init();
-    }
+    private bool m_IsStarted = false; 
 
     void Update(){
-        Spawn();
+        if(m_IsStarted) Spawn();
     }
 
-    void Init(){
+    public void StartSpawner(){
         for(int i = 0; i < PoolSize; i++){
             GameObject go = CreateObject();
             go.SetActive(false);
         }
+
+        m_IsStarted = true;
     }
 
     GameObject CreateObject(){
-        GameObject go = Instantiate(BadPopcorn, this.transform);
+        GameObject go = Instantiate(Popcorn, this.transform);
         PoolList.Add(go);
         return go;
     }
@@ -34,8 +33,12 @@ public class PopcornSpawner : MonoBehaviour{
             m_CurrentTimer -= Time.deltaTime;
         }else{
             m_CurrentTimer = TimeBtwSpawn;
-            GameObject go = GetObject();
+            GetObject();
         }
+    }
+
+    public void StopSpawner(){
+        m_IsStarted = false;
     }
 
     public GameObject GetObject(){
@@ -48,8 +51,4 @@ public class PopcornSpawner : MonoBehaviour{
 
         return CreateObject();
     }
-
-    public void ReturnObject(GameObject go){}
-
-    
 }
