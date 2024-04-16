@@ -123,54 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &399855886
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 399855887}
-  - component: {fileID: 399855888}
-  m_Layer: 0
-  m_Name: GoodPopcornSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &399855887
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399855886}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 632218925}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &399855888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399855886}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d355a8086ecb7cb4e97d068c55f7bc1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Popcorn: {fileID: 4987206949738411943, guid: bb58f22d0359ec842a71e7e6686f196e, type: 3}
-  PoolSize: 2
-  PoolList: []
-  TimeBtwSpawn: 5
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +246,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1335030446}
-  - {fileID: 399855887}
   - {fileID: 2090728886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -307,13 +258,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 632218924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eac8d1aeacbb5845a6101bc15b3a41b, type: 3}
+  m_Script: {fileID: 11500000, guid: cf1a095585175a948b4a039cae2be048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Points: 0
-  m_PointsToWin: 10
+  m_Meters: 0
+  m_MaxMeters: 30
+  TimeBtwMeters: 2
   m_BadsSpawner: {fileID: 1335030447}
-  m_GoodsSpawner: {fileID: 399855888}
 --- !u!1 &838430226
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,7 +377,7 @@ GameObject:
   - component: {fileID: 1335030446}
   - component: {fileID: 1335030447}
   m_Layer: 0
-  m_Name: BadPopcornSpawner
+  m_Name: ObstacleSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -456,13 +407,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1335030445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d355a8086ecb7cb4e97d068c55f7bc1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 34758bb1bfb84a54ea3251ce9ab5f29a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Popcorn: {fileID: 1915532398212231517, guid: 52685073113a1984fa5154ad8f0817ad, type: 3}
+  Obstacle: {fileID: 3754944230093892071, guid: 25a880e50d5f2b8408c314e2a38ddd33, type: 3}
   PoolSize: 10
   PoolList: []
-  TimeBtwSpawn: 3
+  TimeBtwSpawn: 2
 --- !u!1 &1493636062
 GameObject:
   m_ObjectHideFlags: 0
@@ -675,8 +626,8 @@ Transform:
   m_GameObject: {fileID: 1543622527}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1207.6833, y: -364.7444, z: -3.4696183}
-  m_LocalScale: {x: 1, y: 0.04, z: 1}
+  m_LocalPosition: {x: -1207.6833, y: -360.72, z: -3.4696183}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1054312994}
@@ -1224,10 +1175,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1946757646}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b02353a0ac14a048afc8dbadadc0fc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 199ce04661d65da4f884c09481b087d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointsText: {fileID: 1820493082}
+  MetersText: {fileID: 1820493082}
 --- !u!1 &2090728885
 GameObject:
   m_ObjectHideFlags: 0
