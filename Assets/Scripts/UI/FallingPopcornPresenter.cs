@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class FallingPopcornPresenter{
     private FallingPopcornManager m_FallingPopcornManager;
     private FallingPopcornView m_View;
@@ -9,7 +7,7 @@ public class FallingPopcornPresenter{
         m_View = view;
     }
 
-    public void UpdateText(){
+    public void UpdatePoints(){
         m_View.SetPointsText(m_FallingPopcornManager.Points);
     }
 }
