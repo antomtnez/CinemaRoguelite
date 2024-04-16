@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PopcornSpawner : MonoBehaviour{
-    [SerializeField] GameObject Object;
+    [SerializeField] GameObject BadPopcorn;
     [SerializeField] int PoolSize = 0;
     [SerializeField] List<GameObject> PoolList = new List<GameObject>();
     [SerializeField] float TimeBtwSpawn;
@@ -24,7 +24,7 @@ public class PopcornSpawner : MonoBehaviour{
     }
 
     GameObject CreateObject(){
-        GameObject go = Instantiate(Object, this.transform);
+        GameObject go = Instantiate(BadPopcorn, this.transform);
         PoolList.Add(go);
         return go;
     }

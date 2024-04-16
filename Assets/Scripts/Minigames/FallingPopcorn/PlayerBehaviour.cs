@@ -18,4 +18,12 @@ public class PlayerBehaviour : MonoBehaviour{
     bool IsOnBounds(){
         return transform.position.x >= HorizontalBounds || transform.position.x <= -HorizontalBounds;
     }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("Bad")) 
+        if(other.CompareTag("Good")) {
+            other.gameObject.SetActive(false);
+            FallingPopcornManager.Instance.AddPoints(1);
+        } 
+    }
 }
