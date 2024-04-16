@@ -39,11 +39,7 @@ public class CorridorPlayerBehaviour : MonoBehaviour{
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Bad")){
             Death();
-            FallingPopcornManager.Instance.EndMinigame();
-        } 
-        if(other.CompareTag("Good")) {
-            other.gameObject.SetActive(false);
-            FallingPopcornManager.Instance.AddPoints(1);
+            CorridorRunManager.Instance.EndMinigame();
         } 
     }
 

@@ -48,7 +48,7 @@ public class FallingPopcornManager : Minigame{
 
     public void AddPoints(int points){
         m_Points += points;
-        m_FallingPopcornPresenter.UpdateText();
+        m_FallingPopcornPresenter.UpdatePoints();
 
         if(IsGameWinned()) EndMinigame();
     }
