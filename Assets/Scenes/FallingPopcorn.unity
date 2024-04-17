@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 399855887}
-  - component: {fileID: 399855888}
+  - component: {fileID: 399855889}
   m_Layer: 0
   m_Name: GoodPopcornSpawner
   m_TagString: Untagged
@@ -155,7 +155,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 632218925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &399855888
+--- !u!114 &399855889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,10 +164,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 399855886}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d355a8086ecb7cb4e97d068c55f7bc1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 12930b866795c244781d518edf8fcac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Popcorn: {fileID: 4987206949738411943, guid: bb58f22d0359ec842a71e7e6686f196e, type: 3}
+  Object: {fileID: 4987206949738411943, guid: bb58f22d0359ec842a71e7e6686f196e, type: 3}
   PoolSize: 2
   PoolList: []
   TimeBtwSpawn: 5
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Points: 0
   m_PointsToWin: 10
   m_BadsSpawner: {fileID: 1335030447}
-  m_GoodsSpawner: {fileID: 399855888}
+  m_GoodsSpawner: {fileID: 399855889}
 --- !u!1 &838430226
 GameObject:
   m_ObjectHideFlags: 0
@@ -456,10 +456,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1335030445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d355a8086ecb7cb4e97d068c55f7bc1e, type: 3}
+  m_Script: {fileID: 11500000, guid: 12930b866795c244781d518edf8fcac7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Popcorn: {fileID: 1915532398212231517, guid: 52685073113a1984fa5154ad8f0817ad, type: 3}
+  Object: {fileID: 1915532398212231517, guid: 52685073113a1984fa5154ad8f0817ad, type: 3}
   PoolSize: 10
   PoolList: []
   TimeBtwSpawn: 3

@@ -8,7 +8,7 @@ public static CorridorRunManager Instance;
     [SerializeField] float TimeBtwMeters;
     
     [Space(3)]
-    [SerializeField] ObstacleSpawner m_BadsSpawner;
+    [SerializeField] Spawner m_BadsSpawner;
 
     private CorridorRunPresenter m_CorridorRunPresenter;
     private CorridorPlayerBehaviour m_CorridorPlayerBehaviour;
