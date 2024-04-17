@@ -245,6 +245,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1335030446}
+  - {fileID: 1181565505}
   - {fileID: 2090728886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -349,6 +350,53 @@ Transform:
   - {fileID: 1543622529}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1181565504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181565505}
+  - component: {fileID: 1181565506}
+  m_Layer: 0
+  m_Name: PopcornSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1181565505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181565504}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 632218925}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1181565506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181565504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5781b16937b2c4a879b724305d7ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object: {fileID: 2401823390078326480, guid: 2ef3939cc41f4ca4d829e480806d0277, type: 3}
+  PoolSize: 10
+  PoolList: []
 --- !u!1 &1335030445
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +791,7 @@ GameObject:
   - component: {fileID: 1789460423}
   - component: {fileID: 1789460424}
   - component: {fileID: 1789460421}
+  - component: {fileID: 1789460425}
   m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -880,6 +929,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1789460425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789460419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75541ea1384dbc749abacd6baf9f4a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PopcornShots: {fileID: 1181565506}
+  ThrowerAim: {fileID: 1813863912}
 --- !u!1 &1813863910
 GameObject:
   m_ObjectHideFlags: 0
@@ -929,6 +992,7 @@ MonoBehaviour:
   CircleRadius: 1
   RotationSpeed: 50
   AngularBounds: 45
+  m_TimeStoppedWhenThrow: 0.3
 --- !u!212 &1813863913
 SpriteRenderer:
   m_ObjectHideFlags: 0
