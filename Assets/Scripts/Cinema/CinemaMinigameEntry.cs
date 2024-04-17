@@ -1,14 +1,14 @@
 using UnityEngine;
 
 public class CinemaMinigameEntry : MonoBehaviour{
-    private bool Unlocked = false;
-    [SerializeField] Item ItemToUnlockEntry;
+    [SerializeField] bool Unlocked = false;
+    [SerializeField] string ItemIDToUnlockEntry;
 
     void Start(){
-        if(ItemToUnlockEntry != null) UnlockEntry();
+        if(ItemIDToUnlockEntry != null) UnlockEntry();
     }
 
     void UnlockEntry(){
-        Unlocked = CinemaGameManager.Instance.PlayerGetsThisItem(ItemToUnlockEntry);
+        Unlocked = CinemaGameManager.Instance.PlayerHasThisItem(ItemIDToUnlockEntry);
     }
 }
