@@ -30,15 +30,17 @@ public class TutorialMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
-        m_NextState = new CowntdownToStartMinigame(m_Minigame);
+        m_Minigame.ActiveUI();
+        m_NextState = new CountdownToStartMinigame(m_Minigame);
     }
 }
 
-public class CowntdownToStartMinigame : MinigameState{
-    public CowntdownToStartMinigame(Minigame minigame) : base(minigame){}
+public class CountdownToStartMinigame : MinigameState{
+    public CountdownToStartMinigame(Minigame minigame) : base(minigame){}
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
+        m_Minigame.ActiveUI();
         m_NextState = new PlayingMinigame(m_Minigame);
         m_Minigame.StartCountdown();
         m_Minigame.Countdown.onCountdownFinished += ChangeState;
@@ -55,6 +57,7 @@ public class PlayingMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
+        m_Minigame.ActiveUI();
         m_NextState = new FinishMinigame(m_Minigame);
         m_Minigame.StartMinigame();
         m_Minigame.OnMinigameFinished += ChangeState;
@@ -71,6 +74,10 @@ public class FinishMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
+        m_Minigame.ActiveUI();
+        
+        CinemaGameManager.Instance.LostLife();
+        
         m_NextState = m_Minigame.IsGameWinned() ? new WinMinigame(m_Minigame) : new LoseMinigame(m_Minigame); 
         ChangeState();
     }
@@ -81,6 +88,7 @@ public class WinMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
+        m_Minigame.GetPrice();
     }
 }
 

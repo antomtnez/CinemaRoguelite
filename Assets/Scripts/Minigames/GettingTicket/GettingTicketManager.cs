@@ -8,7 +8,7 @@ public class GettingTicketManager : Minigame{
     [SerializeField] float TimeBtwMeters;
     
     [Space(3)]
-    [SerializeField] ObstacleSpawner m_BadsSpawner;
+    [SerializeField] Spawner m_BadsSpawner;
 
     private GettingTicketPresenter m_GettingTicketPresenter;
     private PlayerBehaviour m_PlayerBehaviour;
@@ -59,5 +59,9 @@ public class GettingTicketManager : Minigame{
         }
         
         if(IsGameWinned()) EndMinigame();
+    }
+
+    public override void GetPrice(){
+        CinemaGameManager.Instance.AddItem("ticket", 1);
     }
 }

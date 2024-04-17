@@ -7,8 +7,8 @@ public class FallingPopcornManager : Minigame{
     [SerializeField] int m_PointsToWin;
     
     [Space(3)]
-    [SerializeField] PopcornSpawner m_BadsSpawner;
-    [SerializeField] PopcornSpawner m_GoodsSpawner;
+    [SerializeField] Spawner m_BadsSpawner;
+    [SerializeField] Spawner m_GoodsSpawner;
 
     private FallingPopcornPresenter m_FallingPopcornPresenter;
     private PlayerBehaviour m_PlayerBehaviour;
@@ -48,8 +48,12 @@ public class FallingPopcornManager : Minigame{
 
     public void AddPoints(int points){
         m_Points += points;
-        m_FallingPopcornPresenter.UpdateText();
+        m_FallingPopcornPresenter.UpdatePoints();
 
         if(IsGameWinned()) EndMinigame();
+    }
+
+    public override void GetPrice(){
+        CinemaGameManager.Instance.AddItem("popcornBox", m_Points);
     }
 }
