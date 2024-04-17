@@ -60,4 +60,6 @@ public static CorridorRunManager Instance;
         
         if(IsGameWinned()) EndMinigame();
     }
+
+    public override void GetPrice(){}
 }

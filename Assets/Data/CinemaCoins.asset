@@ -16,4 +16,5 @@ MonoBehaviour:
   Name: Cinema Coins
   Description: Cinema tokens to use in their machines
   Amount: 0
+  MaxAmount: 99
   Icon: {fileID: 0}

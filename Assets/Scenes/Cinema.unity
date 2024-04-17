@@ -297,7 +297,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unlocked: 1
+  IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: 
+  MinigameSceneName: GettingTicket
 --- !u!1 &84366257
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +564,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unlocked: 0
+  IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: popcornBox
+  MinigameSceneName: CorridorRun
 --- !u!1 &171095677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1205,6 +1209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 525097684}
   - component: {fileID: 525097685}
+  - component: {fileID: 525097686}
   m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Untagged
@@ -1262,6 +1267,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 12
+--- !u!114 &525097686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525097683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb14604decba01a4cb6d66a555af8f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntrySprite: {fileID: 1254685286}
 --- !u!1 &550076920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1955,7 @@ GameObject:
   m_Component:
   - component: {fileID: 934259499}
   - component: {fileID: 934259500}
+  - component: {fileID: 934259501}
   m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Untagged
@@ -1994,6 +2013,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 12
+--- !u!114 &934259501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934259498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb14604decba01a4cb6d66a555af8f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntrySprite: {fileID: 57914013}
 --- !u!1 &936496792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2644,6 +2676,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194044857}
   - component: {fileID: 1194044858}
+  - component: {fileID: 1194044859}
   m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Untagged
@@ -2701,6 +2734,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 12
+--- !u!114 &1194044859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194044856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb14604decba01a4cb6d66a555af8f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntrySprite: {fileID: 2066963047}
 --- !u!1 &1254685282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,7 +2921,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unlocked: 0
+  IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: ticket
+  MinigameSceneName: FallingPopcorn
 --- !u!1 &1259596343
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,6 +3302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1634692817}
   - component: {fileID: 1634692818}
+  - component: {fileID: 1634692819}
   m_Layer: 0
   m_Name: PlayerTrigger
   m_TagString: Untagged
@@ -3311,6 +3360,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 12
+--- !u!114 &1634692819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634692816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb14604decba01a4cb6d66a555af8f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntrySprite: {fileID: 97496408}
 --- !u!1 &1682834428
 GameObject:
   m_ObjectHideFlags: 0
@@ -3490,6 +3552,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1755797195}
+  - component: {fileID: 1755797196}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3512,6 +3575,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1755797196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755797193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9546f157fd04597498df79935a269132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Lifes: 10
+  GameItems:
+  - {fileID: 11400000, guid: 26958b4a0e4cf9a49aeaeb1dc774ec26, type: 2}
+  - {fileID: 11400000, guid: eacd3662400687044951e2578bc32ebe, type: 2}
+  - {fileID: 11400000, guid: 96d78675774f8484dbf866f1d322eae8, type: 2}
 --- !u!1 &1797450330
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,7 +4243,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Unlocked: 0
+  IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: energySoda
+  MinigameSceneName: ThrowingPopcorns
 --- !u!1 &2091311257
 GameObject:
   m_ObjectHideFlags: 0

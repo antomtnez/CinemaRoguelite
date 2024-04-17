@@ -11,6 +11,7 @@ public class CinemaGameManager : MonoBehaviour{
     void Awake(){
         if(Instance == null){
             Instance = this;
+            DontDestroyOnLoad(Instance);
         }else{
             Destroy(this);
         }
@@ -33,8 +34,13 @@ public class CinemaGameManager : MonoBehaviour{
 
     public bool PlayerHasThisItem(string itemId){
         foreach(Item gameItem in GameItems)
-            if(gameItem.ID == itemId) return true;
+            if(gameItem.ID == itemId)
+                if(gameItem.Amount >= 1) return true;
 
         return false;
+    }
+
+    public void LostLife(){
+        Lifes--;
     }
 }

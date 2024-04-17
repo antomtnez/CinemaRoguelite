@@ -52,4 +52,8 @@ public class FallingPopcornManager : Minigame{
 
         if(IsGameWinned()) EndMinigame();
     }
+
+    public override void GetPrice(){
+        CinemaGameManager.Instance.AddItem("popcornBox", m_Points);
+    }
 }

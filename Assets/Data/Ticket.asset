@@ -16,4 +16,5 @@ MonoBehaviour:
   Name: Ticket
   Description: A ticket for the movie
   Amount: 0
+  MaxAmount: 1
   Icon: {fileID: 0}

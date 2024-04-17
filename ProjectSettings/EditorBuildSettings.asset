@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Cinema.unity
+    guid: 06d564be8b4700e40a8ac16a4c8f9ed3
+  - enabled: 1
+    path: Assets/Scenes/GettingTicket.unity
+    guid: 36064e075d0a74f4692497d20ffb3cff
+  - enabled: 1
     path: Assets/Scenes/FallingPopcorn.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/CorridorRun.unity
+    guid: 1b6b29a758349b246865829ba2e5a7c7
+  - enabled: 1
+    path: Assets/Scenes/ThrowingPopcorns.unity
+    guid: 6c3fb348aaf57974ebb1f03952782a7c
   m_configObjects: {}
