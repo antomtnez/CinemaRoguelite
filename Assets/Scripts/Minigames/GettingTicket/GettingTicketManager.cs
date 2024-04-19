@@ -8,11 +8,13 @@ public class GettingTicketManager : Minigame{
     [SerializeField] float TimeBtwMeters;
     
     [Space(3)]
-    [SerializeField] Spawner m_BadsSpawner;
+    [SerializeField] BorderSpawner m_BordersSpawner;
+    [SerializeField] GameObject m_FinishLine;
 
     private GettingTicketPresenter m_GettingTicketPresenter;
-    private PlayerBehaviour m_PlayerBehaviour;
+    private GettingTicketPlayerBehaviour m_PlayerBehaviour;
     private float m_CounterTime;
+    private bool m_IsStarted = false;
     
 
     void Awake(){
@@ -25,28 +27,26 @@ public class GettingTicketManager : Minigame{
         Init();
     }
 
-    void Start(){
+    public override void Init(){
+        base.Init();
         m_GettingTicketPresenter = new GettingTicketPresenter(this, FindObjectOfType<GettingTicketView>());     
-        m_PlayerBehaviour = FindObjectOfType<PlayerBehaviour>();
+        m_PlayerBehaviour = FindObjectOfType<GettingTicketPlayerBehaviour>();
+        m_Meters = m_MaxMeters;
     }
     
     void Update(){
-        MoveForward();
+        if(m_IsStarted && m_Meters > 0) MoveForward();
+        if(m_Meters <= 3 && !m_FinishLine.activeInHierarchy) SpawnFinishLine();
     }
 
     public override void StartMinigame(){
-        m_Meters = m_MaxMeters;
-        m_BadsSpawner.StartSpawner();
+        m_BordersSpawner.StartSpawner();
+        Invoke("StartPlayerMove", 4f);
+        m_IsStarted = true;
+    }
+
+    void StartPlayerMove(){
         m_PlayerBehaviour.EnableMove();
-    }
-
-    public override void EndMinigame(){
-        base.EndMinigame();
-        m_BadsSpawner.StopSpawner();
-    }
-
-    public override bool IsGameWinned(){
-        return m_Meters <= 0;
     }
 
     public void MoveForward(){
@@ -57,11 +57,18 @@ public class GettingTicketManager : Minigame{
             m_Meters--;
             m_GettingTicketPresenter.UpdateMeters();
         }
-        
-        if(IsGameWinned()) EndMinigame();
+    }
+
+    void SpawnFinishLine(){
+        m_BordersSpawner.StopSpawner();
+        m_FinishLine.SetActive(true);
     }
 
     public override void GetPrice(){
         CinemaGameManager.Instance.AddItem("ticket", 1);
+    }
+
+    public override bool IsGameWinned(){
+        return false;
     }
 }

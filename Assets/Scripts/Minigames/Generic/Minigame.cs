@@ -10,7 +10,7 @@ public abstract class Minigame : MonoBehaviour{
     public event Action OnMinigameFinished;
     private MinigamePresenter m_MinigamePresenter;
 
-    public void Init(){
+    public virtual void Init(){
         m_StartCountdown = FindObjectOfType<StartCountdown>();
         m_MinigamePresenter = new MinigamePresenter(this, FindObjectOfType<MinigameView>());
         ChangeState(new EnterMinigame(this));
