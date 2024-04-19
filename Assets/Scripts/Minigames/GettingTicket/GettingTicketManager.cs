@@ -9,7 +9,6 @@ public class GettingTicketManager : Minigame{
     
     [Space(3)]
     [SerializeField] BorderSpawner m_BordersSpawner;
-    [SerializeField] Spawner m_BadsSpawner;
     [SerializeField] GameObject m_FinishLine;
 
     private GettingTicketPresenter m_GettingTicketPresenter;
@@ -43,16 +42,11 @@ public class GettingTicketManager : Minigame{
     public override void StartMinigame(){
         m_BordersSpawner.StartSpawner();
         Invoke("StartPlayerMove", 4f);
-        Invoke("StartObstacleSpawner", 6f);
         m_IsStarted = true;
     }
 
     void StartPlayerMove(){
         m_PlayerBehaviour.EnableMove();
-    }
-
-    void StartObstacleSpawner(){
-        m_BadsSpawner.StartSpawner();
     }
 
     public void MoveForward(){
@@ -66,7 +60,6 @@ public class GettingTicketManager : Minigame{
     }
 
     void SpawnFinishLine(){
-        m_BadsSpawner.StopSpawner();
         m_BordersSpawner.StopSpawner();
         m_FinishLine.SetActive(true);
     }

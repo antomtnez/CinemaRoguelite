@@ -6,9 +6,11 @@ public class BorderBehaviour : MonoBehaviour{
     public Transform RightEndPoint => m_RightEndPoint;
     [SerializeField] Transform m_LeftBorder;
     [SerializeField] Transform m_LeftEndPoint;
-    public Transform LeftEndPoint => m_LeftEndPoint;
+    [SerializeField] ObstacleLine m_BottomObstacleLine;
+    [SerializeField] ObstacleLine m_TopObstacleLine;
     [SerializeField] float Speed;
     private Vector2 m_Direction = Vector2.down;
+    public bool HasObstacles = true;
 
     void Update(){
         Move();
@@ -32,5 +34,10 @@ public class BorderBehaviour : MonoBehaviour{
     public void CloseBorderHeight(float closeRotation){
         m_RightBorder.transform.rotation = Quaternion.Euler(0f, 0f, closeRotation);
         m_LeftBorder.transform.rotation = Quaternion.Euler(0f, 0f, -closeRotation);
+    }
+
+    public void SpawnObstacles(){
+        m_TopObstacleLine.SpawnObstacle();
+        m_BottomObstacleLine.SpawnObstacle();
     }
 }

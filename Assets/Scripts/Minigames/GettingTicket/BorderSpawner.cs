@@ -7,10 +7,14 @@ public class BorderSpawner : Pool{
     private float m_NextBorderRotation = 0f;
     private GameObject m_LastBorderSpawned;
 
+    public void StartSpawner(){
+        Init();
+        m_IsStarted = true;
+    }
 
     void Update(){
         if(m_IsStarted){
-            if(m_LastBorderSpawned == null || IsOnScreen(m_LastBorderSpawned.transform)){
+            if(m_LastBorderSpawned == null || EnterOnScreen(m_LastBorderSpawned.transform)){
                 if(m_Counter < 3){
                     m_Counter++;
                 }else{
@@ -23,11 +27,6 @@ public class BorderSpawner : Pool{
         }
     }
 
-    public void StartSpawner(){
-        Init();
-        m_IsStarted = true;
-    }
-
     void Spawn(){
         float yPos = 6f;
         float xPos = 5f;
@@ -38,15 +37,17 @@ public class BorderSpawner : Pool{
 
         m_LastBorderSpawned = GetObject();
         m_LastBorderSpawned.transform.position = new Vector2(m_LastBorderSpawned.transform.position.x, yPos);
-        m_LastBorderSpawned.GetComponent<BorderBehaviour>().SetBorderHeight(xPos);
-        m_LastBorderSpawned.GetComponent<BorderBehaviour>().CloseBorderHeight(m_NextBorderRotation);
+        BorderBehaviour newSpawnedBorderBehaviour = m_LastBorderSpawned.GetComponent<BorderBehaviour>();
+        newSpawnedBorderBehaviour.SetBorderHeight(xPos);
+        newSpawnedBorderBehaviour.CloseBorderHeight(m_NextBorderRotation);
+        newSpawnedBorderBehaviour.SpawnObstacles();
     }
 
     void AddDifficult(){
         m_NextBorderRotation += 3f;
     }
 
-    bool IsOnScreen(Transform transform){
+    bool EnterOnScreen(Transform transform){
         Vector2 screenPosition = Camera.main.WorldToViewportPoint(transform.position);
         return screenPosition.y < 1;
     }
