@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public class CorridorRunManager : Minigame{
-    public static CorridorRunManager Instance;
+public class GettingDrinkManager : Minigame{
+    public static GettingDrinkManager Instance;
     [SerializeField] int m_Meters;
     public int Meters => m_Meters;
     [SerializeField] int m_MaxMeters;
@@ -26,7 +26,7 @@ public class CorridorRunManager : Minigame{
     }
 
     void Start(){
-        m_CorridorRunPresenter = new CorridorRunPresenter(this, FindObjectOfType<CorridorRunView>());     
+        //m_CorridorRunPresenter = new CorridorRunPresenter(this, FindObjectOfType<CorridorRunView>());     
         m_CorridorPlayerBehaviour = FindObjectOfType<CorridorPlayerBehaviour>();
     }
     
