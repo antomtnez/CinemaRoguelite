@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class MinigameState {
@@ -76,10 +77,18 @@ public class FinishMinigame : MinigameState{
         Debug.Log($"Entro a {this.GetType().Name}");
         m_Minigame.ActiveUI();
         
-        CinemaGameManager.Instance.LostLife();
+        TryToLostLife();
         
         m_NextState = m_Minigame.IsGameWinned() ? new WinMinigame(m_Minigame) : new LoseMinigame(m_Minigame); 
         ChangeState();
+    }
+
+    void TryToLostLife(){
+        try{
+            CinemaGameManager.Instance.LostLife();
+        }catch(Exception e){
+            Debug.LogWarning(e);
+        }
     }
 }
 
