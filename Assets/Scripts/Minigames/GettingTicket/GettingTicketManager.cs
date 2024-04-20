@@ -76,6 +76,7 @@ public class GettingTicketManager : Minigame{
     }
 
     public override bool IsGameWinned(){
+        if(m_Meters <= 0) return true;
         return false;
     }
 }

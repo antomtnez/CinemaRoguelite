@@ -37,9 +37,12 @@ public class BorderBehaviour : MonoBehaviour{
         m_LeftBorder.transform.rotation = Quaternion.Euler(0f, 0f, -closeRotation);
     }
 
-    public void SpawnObstacles(){
-        m_TopObstacleLine.SpawnObstacle();
-        m_BottomObstacleLine.SpawnObstacle();
+    public ObstacleSide SpawnTopObstacle(ObstacleSide obstacleSide){
+        return m_TopObstacleLine.SpawnObstacle(obstacleSide);
+    }
+
+    public ObstacleSide SpawnBottomObstacle(ObstacleSide obstacleSide){
+        return m_BottomObstacleLine.SpawnObstacle(obstacleSide);
     }
 
     public void StopBorder(){
