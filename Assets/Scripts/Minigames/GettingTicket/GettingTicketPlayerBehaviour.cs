@@ -21,14 +21,16 @@ public class GettingTicketPlayerBehaviour : MonoBehaviour{
         Speed = -Speed;
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Bad")){
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Bad")){
             Death();
             GettingTicketManager.Instance.EndMinigame();
         } 
         
-        if(other.CompareTag("Wall")) ChangeDirection();
-        
+        if(other.gameObject.CompareTag("Wall")) ChangeDirection();
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
         if(other.CompareTag("Finish")){ 
             GettingTicketManager.Instance.EndMinigame();
             m_CanMove = false;
@@ -36,7 +38,6 @@ public class GettingTicketPlayerBehaviour : MonoBehaviour{
     }
 
     void Death(){
-        gameObject.SetActive(false);
         m_CanMove = false;
     }
 }

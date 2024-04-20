@@ -55,4 +55,10 @@ public class BorderSpawner : Pool{
     public void StopSpawner(){
         m_IsStarted = false;
     }
+
+    public void StopBorderMove(){
+        foreach(GameObject gameObject in PoolList){
+            if(gameObject.activeInHierarchy) gameObject.GetComponent<BorderBehaviour>().StopBorder();
+        }
+    }
 }

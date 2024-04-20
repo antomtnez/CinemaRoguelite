@@ -36,7 +36,8 @@ public class GettingTicketManager : Minigame{
     
     void Update(){
         if(m_IsStarted && m_Meters > 0) MoveForward();
-        if(m_Meters <= 3 && !m_FinishLine.activeInHierarchy) SpawnFinishLine();
+        if(m_Meters <= 3) m_BordersSpawner.StopSpawner();
+        if(m_Meters <= 0 && !m_FinishLine.activeInHierarchy) SpawnFinishLine();
     }
 
     public override void StartMinigame(){
@@ -59,8 +60,14 @@ public class GettingTicketManager : Minigame{
         }
     }
 
-    void SpawnFinishLine(){
+    public override void EndMinigame(){
+        base.EndMinigame();
         m_BordersSpawner.StopSpawner();
+        m_BordersSpawner.StopBorderMove();
+        m_IsStarted = false;
+    }
+
+    void SpawnFinishLine(){
         m_FinishLine.SetActive(true);
     }
 

@@ -11,9 +11,10 @@ public class BorderBehaviour : MonoBehaviour{
     [SerializeField] float Speed;
     private Vector2 m_Direction = Vector2.down;
     public bool HasObstacles = true;
+    private bool m_CanMove = true;
 
     void Update(){
-        Move();
+        if(m_CanMove) Move();
     }
 
     void Move(){
@@ -39,5 +40,9 @@ public class BorderBehaviour : MonoBehaviour{
     public void SpawnObstacles(){
         m_TopObstacleLine.SpawnObstacle();
         m_BottomObstacleLine.SpawnObstacle();
+    }
+
+    public void StopBorder(){
+        m_CanMove = false;
     }
 }
