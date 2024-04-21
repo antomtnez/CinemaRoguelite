@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class Spawner : Pool{
-    [SerializeField] float TimeBtwSpawn;
+    public float TimeBtwSpawn;
     private float m_CurrentTimer;
     private bool m_IsStarted = false; 
 

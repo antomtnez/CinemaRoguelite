@@ -48,6 +48,9 @@ public class FallingPopcornManager : Minigame{
 
     public void AddPoints(int points){
         m_Points += points;
+
+        if(m_Points > 0 && m_Points % 2 == 0) AddDifficult();
+
         m_FallingPopcornPresenter.UpdatePoints();
 
         if(IsGameWinned()) EndMinigame();
@@ -55,5 +58,9 @@ public class FallingPopcornManager : Minigame{
 
     public override void GetPrice(){
         CinemaGameManager.Instance.AddItem("popcornBox", m_Points);
+    }
+
+    void AddDifficult(){
+        m_BadsSpawner.TimeBtwSpawn -= 0.2f;
     }
 }
