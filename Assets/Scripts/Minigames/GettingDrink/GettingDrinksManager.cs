@@ -7,7 +7,7 @@ public class GettingDrinksManager : Minigame{
     [SerializeField] int m_MaxDrinks;
     
     [Space(3)]
-    [SerializeField] Spawner m_BadsSpawner;
+    [SerializeField] DrinkSpawner m_DrinksSpawner;
 
     private GettingDrinksPresenter m_GettingDrinksPresenter;
     private SquarePlayerBehaviour m_SquarePlayerBehaviour;
@@ -29,13 +29,13 @@ public class GettingDrinksManager : Minigame{
     }
 
     public override void StartMinigame(){
-        m_BadsSpawner.StartSpawner();
+        m_DrinksSpawner.StartSpawner();
         m_SquarePlayerBehaviour.EnableMove();
     }
 
     public override void EndMinigame(){
         base.EndMinigame();
-        m_BadsSpawner.StopSpawner();
+        m_DrinksSpawner.StopSpawner();
     }
 
     public override bool IsGameWinned(){
@@ -50,5 +50,7 @@ public class GettingDrinksManager : Minigame{
         if(IsGameWinned()) EndMinigame();
     }
 
-    public override void GetPrice(){}
+    public override void GetPrice(){
+        CinemaGameManager.Instance.AddItem("energySoda", m_Drinks);
+    }
 }
