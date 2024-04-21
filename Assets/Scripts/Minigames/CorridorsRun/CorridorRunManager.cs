@@ -26,7 +26,7 @@ public class CorridorRunManager : Minigame{
     }
 
     void Start(){
-        m_CorridorRunPresenter = new CorridorRunPresenter(this, FindObjectOfType<CorridorRunView>());     
+        m_CorridorRunPresenter = new CorridorRunPresenter(this, FindObjectOfType<MinigameScoreView>());     
         m_CorridorPlayerBehaviour = FindObjectOfType<CorridorPlayerBehaviour>();
     }
     

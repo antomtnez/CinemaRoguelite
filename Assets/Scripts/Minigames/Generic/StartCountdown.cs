@@ -11,7 +11,7 @@ public class StartCountdown : MonoBehaviour{
     private CountdownPresenter m_CountdownPresenter;
 
     public void Init(){
-        m_CountdownPresenter = new CountdownPresenter(this, FindObjectOfType<CountdownView>());
+        m_CountdownPresenter = new CountdownPresenter(this, FindObjectOfType<CounterView>());
         m_TimeLeft = 3;
         StartCoroutine(Countdown());
     }

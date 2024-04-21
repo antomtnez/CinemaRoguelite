@@ -25,7 +25,7 @@ public class FallingPopcornManager : Minigame{
     }
 
     void Start(){
-        m_FallingPopcornPresenter = new FallingPopcornPresenter(this, FindObjectOfType<FallingPopcornView>());     
+        m_FallingPopcornPresenter = new FallingPopcornPresenter(this, FindObjectOfType<MinigameScoreView>());     
         m_PlayerBehaviour = FindObjectOfType<PlayerBehaviour>();
     }
 

@@ -29,7 +29,7 @@ public class GettingTicketManager : Minigame{
 
     public override void Init(){
         base.Init();
-        m_GettingTicketPresenter = new GettingTicketPresenter(this, FindObjectOfType<GettingTicketView>());     
+        m_GettingTicketPresenter = new GettingTicketPresenter(this, FindObjectOfType<MinigameScoreView>());     
         m_PlayerBehaviour = FindObjectOfType<GettingTicketPlayerBehaviour>();
         m_Meters = m_MaxMeters;
     }
