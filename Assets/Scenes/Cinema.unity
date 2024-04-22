@@ -563,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1b8eaf3f55dff449d50e2230a879bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unlocked: 0
+  Unlocked: 1
   IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: popcornBox
   MinigameSceneName: CorridorRun
@@ -2920,7 +2920,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1b8eaf3f55dff449d50e2230a879bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unlocked: 0
+  Unlocked: 1
   IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: ticket
   MinigameSceneName: FallingPopcorn
@@ -4242,7 +4242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1b8eaf3f55dff449d50e2230a879bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Unlocked: 0
+  Unlocked: 1
   IsPlayerOnEntry: 0
   ItemIDToUnlockEntry: energySoda
   MinigameSceneName: ThrowingPopcorns

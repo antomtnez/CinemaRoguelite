@@ -40,13 +40,6 @@ public class ThrowerPlayerBehaviour : MonoBehaviour{
         ThrowerAim.StopAimForThrow();
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Bad")){
-            Death();
-            FallingPopcornManager.Instance.EndMinigame();
-        }
-    }
-
     void Death(){
         gameObject.SetActive(false);
         m_CanMove = false;

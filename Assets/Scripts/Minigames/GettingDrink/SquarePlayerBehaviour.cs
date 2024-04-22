@@ -7,6 +7,7 @@ public class SquarePlayerBehaviour : MonoBehaviour{
     private Vector3[] m_MovePoints;
     private int m_PointToMoveIndex = 0;
     private bool m_IsHidden = false;
+    private bool m_CanMove = false;
     [SerializeField] Vector2 m_ExitFromHidePosition = Vector2.zero;
 
     void Start(){
@@ -15,18 +16,20 @@ public class SquarePlayerBehaviour : MonoBehaviour{
     }
 
     void Update(){
-        if(!m_IsHidden)
+        if (m_CanMove){
+            if(!m_IsHidden)
             MoveTowardsPoints();
 
-        if(Input.GetKeyDown(KeyCode.Space)){
-            m_IsHidden = !m_IsHidden;
-            HideBehindBar();
-        }
+            if(Input.GetKeyDown(KeyCode.Space)){
+                m_IsHidden = !m_IsHidden;
+                HideBehindBar();
+            }
 
-        if(Input.GetKeyUp(KeyCode.Space)){
-            m_IsHidden = !m_IsHidden;
-            ExitFromBar();
-        }
+            if(Input.GetKeyUp(KeyCode.Space)){
+                m_IsHidden = !m_IsHidden;
+                ExitFromBar();
+            }
+        } 
     }
 
     void SetStartPoint(){
@@ -64,5 +67,27 @@ public class SquarePlayerBehaviour : MonoBehaviour{
     void ExitFromBar(){
         Vector2 direction = (m_ExitFromHidePosition - (Vector2)transform.position).normalized;
         transform.Translate(direction * 1.5f);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("Bad")){
+            m_CanMove = false;
+            GettingDrinksManager.Instance.EndMinigame();
+        } 
+
+        if(other.CompareTag("Good")){
+            other.gameObject.SetActive(false);
+            GettingDrinksManager.Instance.AddPoints(1);
+        }
+        
+        if(other.CompareTag("Finish")) {
+            GettingDrinksManager.Instance.EndMinigame();
+            m_CanMove= false;
+            GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
+    public void EnableMove(){
+        m_CanMove = true;
     }
 }

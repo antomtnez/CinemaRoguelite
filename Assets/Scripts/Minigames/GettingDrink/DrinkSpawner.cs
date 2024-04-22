@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : Pool{
+public class DrinkSpawner : Pool {
     public float TimeBtwSpawn;
+    [SerializeField] List<GameObject> SpawnPoints = new List<GameObject>();
     private float m_CurrentTimer;
     private bool m_IsStarted = false; 
 
@@ -19,11 +21,16 @@ public class Spawner : Pool{
             m_CurrentTimer -= Time.deltaTime;
         }else{
             m_CurrentTimer = TimeBtwSpawn;
-            GetObject();
+            GetObject().transform.position = SetRandomPosition();
         }
     }
 
     public void StopSpawner(){
         m_IsStarted = false;
+    }
+
+    Vector3 SetRandomPosition(){
+        int randomPosition = Random.Range(0, SpawnPoints.Count);
+        return SpawnPoints[randomPosition].transform.position;
     }
 }

@@ -19,24 +19,26 @@ public class GettingTicketPlayerBehaviour : MonoBehaviour{
 
     void ChangeDirection(){
         Speed = -Speed;
+        FlipSprite();
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Bad")){
-            Death();
+    void FlipSprite(){
+        //transform.rotation = transform.rotation.eulerAngles.y == 0 ? Quaternion.Euler(0f, 180f, 0f) : Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.CompareTag("Bad")){
+            m_CanMove = false;
             GettingTicketManager.Instance.EndMinigame();
         } 
         
-        if(other.CompareTag("Wall")) ChangeDirection();
-        
-        if(other.CompareTag("Finish")){ 
-            GettingTicketManager.Instance.EndMinigame();
-            m_CanMove = false;
-        }
+        if(other.gameObject.CompareTag("Wall")) ChangeDirection();
     }
 
-    void Death(){
-        gameObject.SetActive(false);
-        m_CanMove = false;
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Finish")){
+            m_CanMove = false;
+            GettingTicketManager.Instance.EndMinigame();
+        }
     }
 }

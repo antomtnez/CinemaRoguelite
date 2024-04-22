@@ -1,13 +1,13 @@
 public class FallingPopcornPresenter{
     private FallingPopcornManager m_FallingPopcornManager;
-    private FallingPopcornView m_View;
+    private MinigameScoreView m_View;
 
-    public FallingPopcornPresenter(FallingPopcornManager manager, FallingPopcornView view){
+    public FallingPopcornPresenter(FallingPopcornManager manager, MinigameScoreView view){
         m_FallingPopcornManager = manager;
         m_View = view;
     }
 
     public void UpdatePoints(){
-        m_View.SetPointsText(m_FallingPopcornManager.Points);
+        m_View.SetScoreText($"{m_FallingPopcornManager.Points}");
     }
 }

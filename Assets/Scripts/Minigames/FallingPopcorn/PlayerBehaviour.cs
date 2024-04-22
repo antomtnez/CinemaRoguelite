@@ -24,21 +24,19 @@ public class PlayerBehaviour : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Bad")){
-            Death();
+            m_CanMove = false;
             FallingPopcornManager.Instance.EndMinigame();
         } 
+
         if(other.CompareTag("Good")){
             other.gameObject.SetActive(false);
             FallingPopcornManager.Instance.AddPoints(1);
         }
         
-        if(other.CompareTag("Wall")) ChangeDirection();
-        
-        if(other.CompareTag("Finish")) FallingPopcornManager.Instance.EndMinigame();
-    }
-
-    void Death(){
-        gameObject.SetActive(false);
-        m_CanMove = false;
+        if(other.CompareTag("Finish")) {
+            FallingPopcornManager.Instance.EndMinigame();
+            m_CanMove= false;
+            GetComponent<Collider2D>().enabled = false;
+        }
     }
 }

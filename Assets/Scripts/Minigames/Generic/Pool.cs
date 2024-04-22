@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Pool : MonoBehaviour{
     [SerializeField] GameObject Object;
-    [SerializeField] int PoolSize = 0;
-    [SerializeField] List<GameObject> PoolList = new List<GameObject>();
+    [SerializeField] protected int PoolSize = 0;
+    [SerializeField] protected List<GameObject> PoolList = new List<GameObject>();
 
     protected void Init(){
         for(int i = 0; i < PoolSize; i++){

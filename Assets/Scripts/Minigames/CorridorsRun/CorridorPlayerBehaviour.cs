@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CorridorPlayerBehaviour : MonoBehaviour{
@@ -38,13 +39,17 @@ public class CorridorPlayerBehaviour : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Bad")){
-            Death();
+            m_CanMove = false;
             CorridorRunManager.Instance.EndMinigame();
         } 
+
+        if(other.CompareTag("Finish")){
+            m_CanMove = false;
+            CorridorRunManager.Instance.EndMinigame();
+        }
     }
 
-    void Death(){
-        gameObject.SetActive(false);
+    public void StopMove(){
         m_CanMove = false;
     }
 }

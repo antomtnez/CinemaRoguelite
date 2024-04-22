@@ -27,4 +27,10 @@ public class PopcornBullet : MonoBehaviour{
         Vector2 screenPosition = Camera.main.WorldToViewportPoint(transform.position);
         return screenPosition.x > 1 || screenPosition.y < 0;
     }
+
+    private void OnTriggerEnter2D(Collider2D other){
+        if(other.CompareTag("Bad")){
+            gameObject.SetActive(false);
+        }
+    }
 }

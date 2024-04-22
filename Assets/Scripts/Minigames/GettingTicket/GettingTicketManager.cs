@@ -29,14 +29,15 @@ public class GettingTicketManager : Minigame{
 
     public override void Init(){
         base.Init();
-        m_GettingTicketPresenter = new GettingTicketPresenter(this, FindObjectOfType<GettingTicketView>());     
+        m_GettingTicketPresenter = new GettingTicketPresenter(this, FindObjectOfType<MinigameScoreView>());     
         m_PlayerBehaviour = FindObjectOfType<GettingTicketPlayerBehaviour>();
         m_Meters = m_MaxMeters;
     }
     
     void Update(){
         if(m_IsStarted && m_Meters > 0) MoveForward();
-        if(m_Meters <= 3 && !m_FinishLine.activeInHierarchy) SpawnFinishLine();
+        if(m_Meters <= 3) m_BordersSpawner.StopSpawner();
+        if(m_Meters <= 0 && !m_FinishLine.activeInHierarchy) SpawnFinishLine();
     }
 
     public override void StartMinigame(){
@@ -59,8 +60,14 @@ public class GettingTicketManager : Minigame{
         }
     }
 
-    void SpawnFinishLine(){
+    public override void EndMinigame(){
+        base.EndMinigame();
         m_BordersSpawner.StopSpawner();
+        m_BordersSpawner.StopBorderMove();
+        m_IsStarted = false;
+    }
+
+    void SpawnFinishLine(){
         m_FinishLine.SetActive(true);
     }
 
@@ -69,6 +76,7 @@ public class GettingTicketManager : Minigame{
     }
 
     public override bool IsGameWinned(){
+        if(m_Meters <= 0) return true;
         return false;
     }
 }

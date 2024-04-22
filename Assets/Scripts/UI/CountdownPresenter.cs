@@ -1,8 +1,8 @@
 public class CountdownPresenter{
     private StartCountdown m_Countdown;
-    private CountdownView m_CountdownView;
+    private CounterView m_CountdownView;
 
-    public CountdownPresenter(StartCountdown startCountdown, CountdownView countdownView) {
+    public CountdownPresenter(StartCountdown startCountdown, CounterView countdownView) {
         m_Countdown = startCountdown;
         m_CountdownView = countdownView;
     }

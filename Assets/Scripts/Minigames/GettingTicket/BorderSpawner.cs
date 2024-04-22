@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BorderSpawner : Pool{
@@ -6,6 +7,7 @@ public class BorderSpawner : Pool{
     private bool m_IsStarted = false;
     private float m_NextBorderRotation = 0f;
     private GameObject m_LastBorderSpawned;
+    private List<ObstacleSide> m_ObstacleSideHistory = new List<ObstacleSide>();
 
     public void StartSpawner(){
         Init();
@@ -37,10 +39,13 @@ public class BorderSpawner : Pool{
 
         m_LastBorderSpawned = GetObject();
         m_LastBorderSpawned.transform.position = new Vector2(m_LastBorderSpawned.transform.position.x, yPos);
+
         BorderBehaviour newSpawnedBorderBehaviour = m_LastBorderSpawned.GetComponent<BorderBehaviour>();
         newSpawnedBorderBehaviour.SetBorderHeight(xPos);
         newSpawnedBorderBehaviour.CloseBorderHeight(m_NextBorderRotation);
-        newSpawnedBorderBehaviour.SpawnObstacles();
+
+        AddObstacleSideEnter(newSpawnedBorderBehaviour.SpawnTopObstacle(ChooseNextObstacleSide()));
+        AddObstacleSideEnter(newSpawnedBorderBehaviour.SpawnBottomObstacle(ChooseNextObstacleSide()));
     }
 
     void AddDifficult(){
@@ -54,5 +59,25 @@ public class BorderSpawner : Pool{
 
     public void StopSpawner(){
         m_IsStarted = false;
+    }
+
+    public void StopBorderMove(){
+        foreach(GameObject gameObject in PoolList){
+            if(gameObject.activeInHierarchy) gameObject.GetComponent<BorderBehaviour>().StopBorder();
+        }
+    }
+
+    void AddObstacleSideEnter(ObstacleSide obstacleSideEnter){
+        if(m_ObstacleSideHistory.Count == 2)
+            m_ObstacleSideHistory.Remove(m_ObstacleSideHistory[0]);
+
+        m_ObstacleSideHistory.Add(obstacleSideEnter);
+    }
+
+    ObstacleSide ChooseNextObstacleSide(){
+        if(m_ObstacleSideHistory.Count == 2 && m_ObstacleSideHistory[0] == m_ObstacleSideHistory[1])
+            return m_ObstacleSideHistory[0] == ObstacleSide.Right ? ObstacleSide.Left : ObstacleSide.Right; 
+
+        return ObstacleSide.Random;
     }
 }

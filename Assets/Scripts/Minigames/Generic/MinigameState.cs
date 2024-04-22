@@ -75,8 +75,6 @@ public class FinishMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
-        m_Minigame.ActiveUI();
-        
         TryToLostLife();
         
         m_NextState = m_Minigame.IsGameWinned() ? new WinMinigame(m_Minigame) : new LoseMinigame(m_Minigame); 
@@ -97,6 +95,7 @@ public class WinMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
+        m_Minigame.ActiveUI();
         m_Minigame.GetPrice();
     }
 }
@@ -106,5 +105,6 @@ public class LoseMinigame : MinigameState{
 
     public override void EnterState(){
         Debug.Log($"Entro a {this.GetType().Name}");
+        m_Minigame.ActiveUI();
     }
 }

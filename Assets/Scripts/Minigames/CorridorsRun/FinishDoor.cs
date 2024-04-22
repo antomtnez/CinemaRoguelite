@@ -1,28 +1,23 @@
 using UnityEngine;
 
-public class CorridorObstacle : MonoBehaviour{
+public class FinishDoor : MonoBehaviour{
     [SerializeField] float Speed;
     private Vector2 m_Direction = Vector2.left;
 
     void OnEnable(){
-        transform.position = SetRandomPosition();
+        transform.position = new Vector2(12f, -1f);
     }
 
     void Update(){
-        Move();
+        if(!IsInCenter()) Move();
     }
 
     void Move(){
         transform.Translate(m_Direction.normalized * Speed * Time.deltaTime);
-        if(IsOutOfBounds()) gameObject.SetActive(false);
     }
 
-    Vector2 SetRandomPosition(){ 
-        return new Vector2(10f, Random.Range(-2f, -3f));
-    }
-
-    bool IsOutOfBounds(){
+    bool IsInCenter(){
         Vector2 screenPosition = Camera.main.WorldToViewportPoint(transform.position);
-        return screenPosition.x < 0;
+        return screenPosition.x < .2f;
     }
 }
