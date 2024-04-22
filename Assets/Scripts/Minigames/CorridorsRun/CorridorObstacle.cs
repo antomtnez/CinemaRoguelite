@@ -18,7 +18,7 @@ public class CorridorObstacle : MonoBehaviour{
     }
 
     Vector2 SetRandomPosition(){ 
-        return new Vector2(10f, Random.Range(-1.5f, -2.5f));
+        return new Vector2(10f, Random.Range(-2f, -3f));
     }
 
     bool IsOutOfBounds(){
