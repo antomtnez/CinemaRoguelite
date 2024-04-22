@@ -39,9 +39,4 @@ public class ThrowerPlayerBehaviour : MonoBehaviour{
         m_PopcornShots.GetObject();
         ThrowerAim.StopAimForThrow();
     }
-
-    void Death(){
-        gameObject.SetActive(false);
-        m_CanMove = false;
-    }
 }

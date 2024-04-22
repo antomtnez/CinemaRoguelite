@@ -30,6 +30,8 @@ public class PopcornBullet : MonoBehaviour{
 
     private void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Bad")){
+            ThrowingPopcornsManager.Instance.RemoveNoise();
+            other.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
     }
