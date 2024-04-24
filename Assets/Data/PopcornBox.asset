@@ -15,6 +15,6 @@ MonoBehaviour:
   ID: popcornBox
   Name: Popcorn Box
   Description: Popcorn box for the movie
-  Amount: 40
+  Amount: 0
   MaxAmount: 40
   Icon: {fileID: 0}

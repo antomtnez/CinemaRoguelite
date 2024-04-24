@@ -20,11 +20,12 @@ public class CinemaMinigameEntry : MonoBehaviour{
     }
 
     void UnlockEntry(){
-        Unlocked = CinemaGameManager.Instance.PlayerHasThisItem(ItemIDToUnlockEntry);
+        Unlocked = MainGameManager.Instance.PlayerHasThisItem(ItemIDToUnlockEntry);
         m_MinigameEntryPresenter.IsEntryUnlocked();
     }
 
     void EntryMinigame(){
-        SceneManager.LoadScene(MinigameSceneName);
+        SceneManager.LoadSceneAsync(MinigameSceneName);
+        MainGameManager.Instance.Skip();
     }
 }

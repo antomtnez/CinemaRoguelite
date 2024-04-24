@@ -5,7 +5,7 @@ public class UIPanelManager : MonoBehaviour {
     UIPanel m_CurrentPanel;
     List<UIPanel> m_UIPanelsList = new List<UIPanel>();
 
-    void Start(){
+    public void Init(){
         SetComponentReferences();
     }
 

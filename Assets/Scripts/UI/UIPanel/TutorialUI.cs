@@ -18,6 +18,7 @@ public class TutorialUI : UIPanel {
     void SetButtonFunction(){
         SkipButton.onClick.AddListener(()=>{
             Minigame.Instance.Skip();
+            SkipButton.onClick.RemoveAllListeners();
         });
     }
 }

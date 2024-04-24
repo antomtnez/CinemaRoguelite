@@ -85,7 +85,7 @@ public class FinishMinigame : MinigameState{
 
     void TryToLostLife(){
         try{
-            CinemaGameManager.Instance.LostLife();
+            MainGameManager.Instance.LostLife();
         }catch(Exception e){
             Debug.LogWarning(e);
         }

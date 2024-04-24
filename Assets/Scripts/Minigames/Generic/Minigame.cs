@@ -24,14 +24,15 @@ public abstract class Minigame : MonoBehaviour {
 
     void Start(){
         SetComponentReferences();
-        SetInitState();
+        SetStartState();
     }
 
     void SetComponentReferences(){
         m_UIPanelManager = FindObjectOfType<UIPanelManager>();
     }
 
-    void SetInitState(){
+    void SetStartState(){
+        m_UIPanelManager.Init();
         ChangeState(new EnterMinigame(this));
     }
 
@@ -54,7 +55,6 @@ public abstract class Minigame : MonoBehaviour {
     }
 
     public void UpdateUI(){
-        Debug.Log("update minigame UI");
         m_UIPanelManager.UpdateUI();
     }
 

@@ -17,7 +17,8 @@ public class LoseUI : UIPanel {
 
     void SetButtonFunction(){
         SkipButton.onClick.AddListener(()=>{
-            CinemaGameManager.Instance.ReturnToCinema();
+            MainGameManager.Instance.ReturnToCinema();
+            SkipButton.onClick.RemoveAllListeners();
         });
     }
 }
