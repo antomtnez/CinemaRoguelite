@@ -1,48 +1,69 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public abstract class Minigame : MonoBehaviour{
-    protected MinigameState m_State;
-    public MinigameState State => m_State;
-    private StartCountdown m_StartCountdown;
-    public StartCountdown Countdown => m_StartCountdown;
+public interface IGameScoreUpdater{
+    public void UpdateScore();
+}
+
+public abstract class Minigame : MonoBehaviour {
+    public static Minigame Instance;
+    MinigameState m_CurrentState;
+    UIPanelManager m_UIPanelManager;
+    [SerializeField] Countdown m_StartCountdown;
+    public Countdown StartCountdown => m_StartCountdown;
+
     public event Action OnMinigameFinished;
-    private MinigamePresenter m_MinigamePresenter;
 
-    public virtual void Init(){
-        m_StartCountdown = FindObjectOfType<StartCountdown>();
-        m_MinigamePresenter = new MinigamePresenter(this, FindObjectOfType<MinigameView>());
+    void Awake(){
+        if(Instance != null){
+            Destroy(this);
+        }else{
+            Instance = this;
+        }
+    }
+
+    void Start(){
+        SetComponentReferences();
+        SetInitState();
+    }
+
+    void SetComponentReferences(){
+        m_UIPanelManager = FindObjectOfType<UIPanelManager>();
+    }
+
+    void SetInitState(){
         ChangeState(new EnterMinigame(this));
     }
 
     public void ChangeState(MinigameState newState){
-        Debug.Log($"{this.name} esta en {m_State}");
-        m_State = newState;
-        m_State.EnterState();
+        m_CurrentState = newState;
+        Debug.Log($"new state: {m_CurrentState.GetType().Name}");
+        m_CurrentState.EnterState();
     }
 
-    public void ActiveUI(){
-        m_MinigamePresenter.ShowUIScreen();
+    void Update(){
+        m_CurrentState.UpdateState();
     }
 
-    public void StartCountdown(){
-        m_StartCountdown.Init();
+    public void Skip(){
+        m_CurrentState.ChangeState();
     }
 
-    public void SkipTutorial(){
-        m_State.ChangeState();
+    public void SetUIPanel(){
+        m_UIPanelManager.ChangePanel(m_CurrentState.GetType().Name);
+    }
+
+    public void UpdateUI(){
+        Debug.Log("update minigame UI");
+        m_UIPanelManager.UpdateUI();
     }
 
     public abstract void StartMinigame();
-    public virtual void EndMinigame(){
+    public abstract void RunMinigame();
+    public abstract void EndMinigame();
+    public abstract bool IsWinned();
+    public virtual void GivePrice(){}
+    public void SendOnMinigameFinishedCall(){
         OnMinigameFinished?.Invoke();
-    }
-
-    public abstract bool IsGameWinned();
-    public abstract void GetPrice();
-
-    public void ReturnToCinema(){
-        SceneManager.LoadScene("Cinema");
     }
 }

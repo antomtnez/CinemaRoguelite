@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  BulletMagazine: {fileID: 11400000, guid: eacd3662400687044951e2578bc32ebe, type: 2}
 --- !u!58 &7606411117198014963
 CircleCollider2D:
   m_ObjectHideFlags: 0
